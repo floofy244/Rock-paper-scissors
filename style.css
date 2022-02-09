@@ -52,3 +52,7 @@ body {
   #status {
     margin-top: 20px;
   }
+
+  #rst{
+    display: none;
+  }

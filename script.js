@@ -55,6 +55,10 @@ function play(playerPick) {
   
   document.getElementById('playerScore').innerHTML = playerScore;
   document.getElementById('computerScore').innerHTML = computerScore;
+
+  if(playerScore == 5 || computerScore == 5){
+    gameOver();
+  }
   
 }
 
@@ -62,4 +66,25 @@ function getcomputerPick() {
   var choices = ['rock', 'paper', 'scissors'];
   var pick = choices[Math.floor(Math.random() * 3)];
   return pick;
+}
+
+function gameOver(){
+  let resetButton = document.getElementById('rst')
+  resetButton.style.display = 'inline-block';
+  if(playerScore == 5){
+    document.getElementById('status').innerHTML = "<p>You win! :)</p>";
+    document.getElementById('status').innerHTML += "<p>Play again?</p>";
+    document.getElementById('rock').onclick = null;
+    document.getElementById('paper').onclick = null;
+    document.getElementById('scissors').onclick = null;
+  } else if (computerScore == 5){
+    document.getElementById('status').innerHTML = "<p>You lose. :(</p>";
+    document.getElementById('status').innerHTML += "<p>Play again?</p>";
+    document.getElementById('rock').onclick = null;
+    document.getElementById('paper').onclick = null;
+    document.getElementById('scissors').onclick = null;
+  }
+  resetButton.addEventListener('click', () => {
+    window.location.reload();
+  });
 }
